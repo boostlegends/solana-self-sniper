@@ -1,0 +1,1 @@
+export type PublicKeyString = string; // base58 encoded 
