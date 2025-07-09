@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  validator:
+    image: solanalabs/solana:edge
+    command: >-
+      solana-test-validator --reset --quiet
+    ports:
+      - "8899:8899" # RPC
+      - "8900:8900" # Gossip
+    healthcheck:
+      test: ["CMD", "solana", "ping", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  jito-mock:
+    image: ghcr.io/jito-foundation/block-engine:devnet
+    ports:
+      - "4000:4000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
