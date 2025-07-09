@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import { loadConfig } from './config.js';
-// import { runBundle } from './bundle.js';
+import { runBundle } from './bundle.js';
 // import { startWatcher } from './watch.js';
 
 const program = new Command();
@@ -17,13 +17,13 @@ program
 
     if (options.bundle) {
       console.log('Running bundle...');
-      // await runBundle(cfg);
+      await runBundle();
     }
 
     if (options.watch) {
       console.log('Starting watcher...');
-      // await startWatcher(cfg);
+      // await startWatcher();
     }
   });
 
-program.parse(); 
+program.parse();
